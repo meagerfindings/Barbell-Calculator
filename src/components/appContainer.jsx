@@ -34,7 +34,10 @@ class AppContainer extends React.Component {
           value={this.state.workSetWeight}
           handleOnChange={this.onWorkSetInputValueChange}
         />
-        <OutPutContainer workSetWeight={this.state.workSetWeight}/>
+        <OutPutContainer
+          availablePlates={this.state.availablePlates}
+          workSetWeight={this.state.workSetWeight}
+        />
       </>
     )
   }
