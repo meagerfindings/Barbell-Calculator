@@ -1,7 +1,7 @@
 import _ from "lodash";
 
 function largestPlate(availablePlates, total) {
-  let tempPlates = [...availablePlates];
+  let tempPlates = Array.from(availablePlates);
   let biggestPlate = _.max(tempPlates);
 
   do {
