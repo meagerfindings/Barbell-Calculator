@@ -3,6 +3,7 @@ import React from "react";
 import { number } from "prop-types";
 import largestPlate from "../helpers/largestPlate";
 import availablePounds from "../helpers/availablePounds";
+import weightForSleeves from "../helpers/weightForSleeves";
 
 class OutPutContainer extends React.Component {
   static propTypes = {
@@ -26,7 +27,7 @@ class OutPutContainer extends React.Component {
     if (_.isNaN(this.props.workSetWeight)) return null;
     if (this.props.workSetWeight < 45 ) return null;
 
-    return largestPlate(this.availablePoundPlates(), this.weightForSleeves());
+    return largestPlate(this.availablePoundPlates(), weightForSleeves(this.weightWithoutBar()));
   };
 
   availablePoundPlates = () => {
@@ -37,15 +38,6 @@ class OutPutContainer extends React.Component {
   weightWithoutBar = () => {
     return this.props.workSetWeight - this.props.availablePlates.barWeight;
   };
-
-  weightForSleeves = () => {
-    const platesWeight = this.weightWithoutBar();
-    if ( platesWeight === 0) {
-      return 0;
-    }
-
-    return platesWeight / 2;
-  }
 }
 
 export default OutPutContainer;
