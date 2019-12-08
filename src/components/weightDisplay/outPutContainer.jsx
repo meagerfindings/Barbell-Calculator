@@ -30,12 +30,11 @@ class OutPutContainer extends React.Component {
 
     //TODO: need to devide weight without bar by 2 to get our final amount
 
-    return largestPlate(this.availablePoundPlates, weightWithoutBar);
+    return largestPlate(this.availablePoundPlates(), weightWithoutBar);
   };
 
   availablePoundPlates = () => {
     const { availablePlates } = this.props;
-
     return availablePounds(availablePlates.lbs);
   };
 }
