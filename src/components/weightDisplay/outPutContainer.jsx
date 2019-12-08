@@ -2,6 +2,7 @@ import _ from "lodash";
 import React from "react";
 import { number } from "prop-types";
 import largestPlate from "../helpers/largestPlate";
+import availablePounds from "../helpers/availablePounds";
 
 class OutPutContainer extends React.Component {
   static propTypes = {
@@ -27,15 +28,15 @@ class OutPutContainer extends React.Component {
 
     const  weightWithoutBar = this.props.workSetWeight - this.props.availablePlates.barWeight;
 
-    // largestPlate(this.props.availablePlates.lbs, weightWithoutBar);
+    //TODO: need to devide weight without bar by 2 to get our final amount
 
-    // return this.props.workSetWeight;
-  }
+    return largestPlate(this.availablePoundPlates, weightWithoutBar);
+  };
 
-  availableLbs = () => {
-    const  plates = []
-    //TODO: Make into helper with specs
-    // for each entry within Lbs, add weight to plates as many times as it's available
+  availablePoundPlates = () => {
+    const { availablePlates } = this.props;
+
+    return availablePounds(availablePlates.lbs);
   };
 }
 
