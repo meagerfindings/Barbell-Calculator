@@ -26,16 +26,16 @@ class OutPutContainer extends React.Component {
     if (_.isNaN(this.props.workSetWeight)) return null;
     if (this.props.workSetWeight < 45 ) return null;
 
-    const  weightWithoutBar = this.props.workSetWeight - this.props.availablePlates.barWeight;
-
-    //TODO: need to devide weight without bar by 2 to get our final amount
-
-    return largestPlate(this.availablePoundPlates(), weightWithoutBar);
+    return largestPlate(this.availablePoundPlates(), this.weightWithoutBar());
   };
 
   availablePoundPlates = () => {
     const { availablePlates } = this.props;
     return availablePounds(availablePlates.lbs);
+  };
+
+  weightWithoutBar = () => {
+    return this.props.workSetWeight - this.props.availablePlates.barWeight;
   };
 }
 
