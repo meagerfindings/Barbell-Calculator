@@ -1,9 +1,7 @@
 import _ from "lodash";
 import React from "react";
 import { number } from "prop-types";
-import largestPlate from "../helpers/largestPlate";
-import availablePounds from "../helpers/availablePounds";
-import weightForSleeves from "../helpers/weightForSleeves";
+import { sleevePlates } from "../helpers/sleevePlates";
 
 class OutPutContainer extends React.Component {
   static propTypes = {
@@ -17,7 +15,7 @@ class OutPutContainer extends React.Component {
   render() {
     return (
       <div className="output">
-        WorkSet Weight:
+        Plates Needed:
         {this.renderWorkSetWeight()}
       </div>
     )
@@ -27,16 +25,7 @@ class OutPutContainer extends React.Component {
     if (_.isNaN(this.props.workSetWeight)) return null;
     if (this.props.workSetWeight < 45 ) return null;
 
-    return largestPlate(this.availablePoundPlates(), weightForSleeves(this.weightWithoutBar()));
-  };
-
-  availablePoundPlates = () => {
-    const { availablePlates } = this.props;
-    return availablePounds(availablePlates.lbs);
-  };
-
-  weightWithoutBar = () => {
-    return this.props.workSetWeight - this.props.availablePlates.barWeight;
+    return sleevePlates(this.props.workSetWeight, this.props.availablePlates);
   };
 }
 
