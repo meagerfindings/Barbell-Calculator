@@ -1,6 +1,7 @@
 {
   "name": "barbell-calculator",
   "version": "0.1.0",
+  "homepage": "https://matgreten.dev/barbell-calculator/",
   "private": true,
   "dependencies": {
     "lodash": "^4.17.13",
