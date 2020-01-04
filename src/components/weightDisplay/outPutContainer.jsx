@@ -16,7 +16,7 @@ class OutPutContainer extends React.Component {
     const plates =this.platesNeeded();
     return (
       <div className="output">
-        Plates Needed:
+        <h2>Plates Needed</h2>
         {this.renderPlates(plates)}
       </div>
     )

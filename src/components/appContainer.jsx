@@ -28,7 +28,7 @@ class AppContainer extends React.Component {
     return (
       <>
         <header className="App-header">
-          Barbell Calculator
+          <h1>Barbell Calculator</h1>
         </header>
         <WeightInput
           value={this.state.workSetWeight}

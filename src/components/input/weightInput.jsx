@@ -11,7 +11,7 @@ class WeightInput extends React.Component {
     return (
       <form className="weight-input-container">
         <label className="weight-input-label">
-          Workset Weight:
+          <h3>Workset Weight</h3>
           <input
             name="weight"
             className="weight-input-value"
