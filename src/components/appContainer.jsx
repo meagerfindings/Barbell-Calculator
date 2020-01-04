@@ -43,8 +43,7 @@ class AppContainer extends React.Component {
   }
 
   onWorkSetInputValueChange = (e) => {
-    const value = parseInt(e.currentTarget.value);
-    this.setState({ workSetWeight: value});
+    this.setState({ workSetWeight: e.currentTarget.value });
   }
 }
 
