@@ -5,10 +5,10 @@
   "dependencies": {
     "lodash": "^4.17.13",
     "lodash.template": "^4.5.0",
+    "prop-types": "latest",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-scripts": "3.0.1",
-    "prop-types": "latest"
+    "react-scripts": "3.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
