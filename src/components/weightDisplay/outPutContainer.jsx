@@ -22,10 +22,11 @@ class OutPutContainer extends React.Component {
   }
 
   renderWorkSetWeight = () => {
-    if (_.isNaN(this.props.workSetWeight)) return null;
-    if (this.props.workSetWeight < 45 ) return null;
+    const { workSetWeight, availablePlates } = this.props;
+    if (_.isNaN(workSetWeight)) return null;
+    if (workSetWeight < 45 ) return null;
 
-    return sleevePlates(this.props.workSetWeight, this.props.availablePlates);
+    return sleevePlates(workSetWeight, availablePlates);
   };
 }
 
