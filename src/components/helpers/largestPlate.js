@@ -1,4 +1,5 @@
 import _ from "lodash";
+import {removeItemFromArray} from "./removeItemFromArray";
 
 function largestPlate(availablePlates, total) {
   let tempPlates = Array.from(availablePlates);
@@ -6,14 +7,13 @@ function largestPlate(availablePlates, total) {
 
   do {
     biggestPlate = _.max(tempPlates);
-    const index = _.indexOf(tempPlates, biggestPlate);
 
     if (biggestPlate <= total) {
       return biggestPlate;
     }
 
-    tempPlates.splice(index, 1);
-  } while  (tempPlates.length > 0);
+    tempPlates = removeItemFromArray(tempPlates, biggestPlate)
+  } while (tempPlates.length > 0);
 
 
   return biggestPlate <= total ? biggestPlate : 0;
