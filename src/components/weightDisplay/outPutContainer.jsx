@@ -1,8 +1,7 @@
 import _ from "lodash";
 import React from "react";
 import { number } from "prop-types";
-import largestPlate from "../helpers/largestPlate";
-import availablePounds from "../helpers/availablePounds";
+import { sleevePlates } from "../helpers/sleevePlates";
 
 class OutPutContainer extends React.Component {
   static propTypes = {
@@ -14,28 +13,31 @@ class OutPutContainer extends React.Component {
   };
 
   render() {
+    const plates =this.platesNeeded();
     return (
       <div className="output">
-        WorkSet Weight:
-        {this.renderWorkSetWeight()}
+        Plates Needed:
+        {this.renderPlates(plates)}
       </div>
     )
   }
 
-  renderWorkSetWeight = () => {
-    if (_.isNaN(this.props.workSetWeight)) return null;
-    if (this.props.workSetWeight < 45 ) return null;
+  platesNeeded = () => {
+    const { workSetWeight, availablePlates } = this.props;
+    if (_.isNaN(workSetWeight)) return null;
+    if (workSetWeight < availablePlates.barWeight ) return null;
 
-    const  weightWithoutBar = this.props.workSetWeight - this.props.availablePlates.barWeight;
-
-    //TODO: need to devide weight without bar by 2 to get our final amount
-
-    return largestPlate(this.availablePoundPlates(), weightWithoutBar);
+    return sleevePlates(workSetWeight, availablePlates);
   };
 
-  availablePoundPlates = () => {
-    const { availablePlates } = this.props;
-    return availablePounds(availablePlates.lbs);
+  renderPlates = plates => {
+    if (_.isNull(plates)) return null;
+
+    const listItems = plates.map((plate, index) =>
+      <li key={index}>{plate}</li>
+    );
+
+    return <ul className="plates-needed">{listItems}</ul>
   };
 }
 
